@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class FooController {
+public class FooRestController {
 
     private final FooService fooService;
     private final FooRequestToFooVoConverter fooRequestToFooVoConverter;
     private final FooResponseMapper fooResponseMapper;
 
-    public FooController(FooService fooService,
-                         FooRequestToFooVoConverter fooRequestToFooVoConverter,
-                         FooResponseMapper fooResponseMapper) {
+    public FooRestController(FooService fooService,
+                             FooRequestToFooVoConverter fooRequestToFooVoConverter,
+                             FooResponseMapper fooResponseMapper) {
         this.fooService = fooService;
         this.fooRequestToFooVoConverter = fooRequestToFooVoConverter;
         this.fooResponseMapper = fooResponseMapper;

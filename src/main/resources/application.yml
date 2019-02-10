@@ -1,17 +1,32 @@
 spring:
   application.name: hexagonal-architecture-example
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    cache:
+      connection:
+        mode: channel
+
+  cloud:
+    stream:
+      bindings:
+        fooCreateRequestedChannel:
+          destination: foo.create.requested
+        fooCreatedInputChannel:
+          destination: foo.created
+
+---
+spring:
+  profiles: production
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     poolName: hexagonal-architecture-example-dbconnectionpool
-  jpa:
-    database: MYSQL
-    show-sql: false
-    hibernate:
-      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-      ddl-auto: validate
-queue:
-  activemq:
-    brokerUrl: vm://localhost?broker.persistent=false&broker.useJmx=true&broker.useShutdownHook=false&jms.redeliveryPolicy.maximumRedeliveries=3&jms.redeliveryPolicy.redeliveryDelay=2000
-    inMemory: true
-    pooled: true
+    jpa:
+      database: MYSQL
+      show-sql: false
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        ddl-auto: validate
