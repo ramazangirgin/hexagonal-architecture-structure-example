@@ -1,0 +1,17 @@
+spring:
+  application.name: hexagonal-architecture-example
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    poolName: hexagonal-architecture-example-dbconnectionpool
+  jpa:
+    database: MYSQL
+    show-sql: false
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      ddl-auto: validate
+queue:
+  activemq:
+    brokerUrl: vm://localhost?broker.persistent=false&broker.useJmx=true&broker.useShutdownHook=false&jms.redeliveryPolicy.maximumRedeliveries=3&jms.redeliveryPolicy.redeliveryDelay=2000
+    inMemory: true
+    pooled: true
